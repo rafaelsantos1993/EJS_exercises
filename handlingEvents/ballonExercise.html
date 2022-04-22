@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>Ballon Exercise</title>
+        <meta charset="utf8">
+     
+    </head>
+    <body>
+        <p style="font-size: 40px;">🎈</p>
+    </body>
+   
+    <script>
+        // the scrips listent to arrow up and down, to increase or decrease
+        // a ballon size. 
+        const ballon = document.querySelector('p');
+        window.addEventListener('keydown', event => {
+            if (event.key == "ArrowUp"){
+                originalSize = ballon.style.fontSize;
+                if (parseInt(originalSize) > 60) {
+                    ballon.textContent = "💥";
+                } else {
+                ballon.style.fontSize = `${Math.floor(parseInt(originalSize)*1.10)}px`;
+                
+                }
+            } else if (event.key == 'ArrowDown'){
+                originalSize = ballon.style.fontSize;
+                console.log(originalSize);
+                ballon.style.fontSize = `${Math.floor(parseInt(originalSize)*.9)}px`;
+            }
+
+        })
+    </script>
+
+</html>
