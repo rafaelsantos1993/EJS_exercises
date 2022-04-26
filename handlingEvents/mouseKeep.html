@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Mouse Keep</title>
-        <meta charset="utf-8">
-    </head>
-    <style>
 
-        .trail { 
-            position: absolute;
-            height: 6px; width: 6px;
-            border-radius: 3px;
-            background: teal;
+<head>
+    <title>Mouse Keep</title>
+    <meta charset="utf-8">
+</head>
+<style>
+    .trail {
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        border-radius: 3px;
+        background: teal;
+    }
+
+    body {
+        height: 300px;
+    }
+</style>
+
+<body>
+</body>
+<script>
+
+    var countTracker = 0;  //count the amount of pixlels before errase 
+
+    window.addEventListener("mousemove", event => {
+
+        //drawing before the cursor 
+        var trace = document.createElement('div');
+        trace.className = "trail";
+        trace.style.left = `${event.pageX}px`;
+        trace.style.top = `${event.pageY}px`;
+        document.body.appendChild(trace);
+        countTracker += 1;
+
+        //erase after 20 pixels
+        if (countTracker > 10) {
+            div = document.getElementsByClassName("trail");
+            divs = Array.from(div);
+
+            divs.forEach(element => {
+                element.classList.remove('trail');
+                console.log('Aqui')
+            });
+            countTracker = 0;
         }
-        body {
-            height: 300px;
-        }
-    </style>
-    <body>
-    </body>
-    <script>
-        
-        var countTracker = 0;  //count the amount of pixlels before errase 
 
-        window.addEventListener("mousemove", event => {
+    });
+</script>
 
-            //drawing before the cursor 
-            var trace = document.createElement('div');
-            trace.className  = "trail";
-            trace.style.left = `${event.pageX}px`;
-            trace.style.top = `${event.pageY}px`;
-            document.body.appendChild(trace);
-            contTracker+=1;
-
-            //erase after 20 pixels
-            if (countTracker > 20) {
-                div = document.getElementsByClassName("trail");
-                divs = Array.from(div);
-                
-                divs.forEach(element => {
-                    element.classList.remove('trail');
-                });
-
-                while(div.firstChild){
-                    div.classList.remove('trail');
-                    
-                }
-                countTracker = 0;
-            }
-            
-        });
-    </script>
 </html>
