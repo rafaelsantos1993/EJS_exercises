@@ -17,18 +17,37 @@
         }
     </style>
     <body>
-
     </body>
     <script>
-        //const trail = document.querySelector ('.trail');
-        var tracker = [];
+        
+        var countTracker = 0;  //count the amount of pixlels before errase 
+
         window.addEventListener("mousemove", event => {
-            
-            if (tracker > 6){
+
+            //drawing before the cursor 
+            var trace = document.createElement('div');
+            trace.className  = "trail";
+            trace.style.left = `${event.pageX}px`;
+            trace.style.top = `${event.pageY}px`;
+            document.body.appendChild(trace);
+            contTracker+=1;
+
+            //erase after 20 pixels
+            if (countTracker > 20) {
+                div = document.getElementsByClassName("trail");
+                divs = Array.from(div);
                 
-            } else {
-                tracker.push();
+                divs.forEach(element => {
+                    element.classList.remove('trail');
+                });
+
+                while(div.firstChild){
+                    div.classList.remove('trail');
+                    
+                }
+                countTracker = 0;
             }
+            
         });
     </script>
 </html>
